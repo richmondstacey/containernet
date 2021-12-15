@@ -101,7 +101,7 @@ from math import ceil
 
 from mininet.cli import CLI
 from mininet.log import info, error, debug, output, warn
-from mininet.node import ( Node, Docker, Host, OVSKernelSwitch,
+from mininet.node import ( Node, Docker, DockerSwarm, Host, OVSKernelSwitch,
                            DefaultController, Controller, OVSSwitch, OVSBridge )
 from mininet.nodelib import NAT
 from mininet.link import Link, Intf
@@ -1060,6 +1060,13 @@ class Containernet( Mininet ):
         Docker container as a host.
         """
         return self.addHost( name, cls=cls, **params)
+
+    def addDockerSwarm(self, name, cls=DockerSwarm, **params ):
+        """
+        Wrapper for addHost method that adds a
+        DockerSwarm container as a host.
+        """
+        return self.addHost(name, cls=cls, **params)
 
     def removeDocker( self, name, **params):
         """
